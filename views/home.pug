@@ -1,0 +1,16 @@
+extends layout
+
+block content
+  h1 Demo showing push notifications
+
+  article
+    p If your browser supports push notification you will see a button "Enable Push Notifications". After clicking it and everything worked as expected you will get a push notification with the title "Welcome". 
+
+    p You can find the code on 
+      |
+      a(href='https://github.com/justmarkup/demos/tree/gh-pages/push-notifications') Github
+      | .
+
+    div(class='push-wrapper hidden')
+      button(class='push-button')
+

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <link rel="manifest" href="/manifest.json">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#FFFFFF">
+    <title>Demo showing push notifications</title>
+    <link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+<main>
+    <h1>Demo showing push notifications</h1>
+    <article>
+        <p>If your browser supports push notification you will see a button "Enable Push Notifications". After clicking it and everything worked as expected you will get a push notification with the title "Welcome".</p>
+        <p>You can find the code on<a href="https://github.com/justmarkup/demos/tree/gh-pages/push-notifications">Github</a></p>
+        <div class="push-wrapper hidden">
+            <button class="push-button"></button>
+        </div>
+    </article>
+</main>
+<script>
+    // load JavaScript for push notifications in supported browsers
+    if ('serviceWorker' in navigator && 'PushManager' in window) {
+        function loadScript(src) {
+            return new Promise(function (resolve, reject) {
+                var s;
+                s = document.createElement('script');
+                s.src = src;
+                s.onload = resolve;
+                s.onerror = reject;
+                document.head.appendChild(s);
+            });
+        }
+
+        loadScript('/script/push.js');
+    } else {
+        var info;
+        info = document.createElement('p');
+        info.className = 'message message--error';
+        info.textContent = "Sorry, your browser doesn't support push notifications";
+        document.body.appendChild(info);
+    }
+
+</script>
+</body>
+</html>
