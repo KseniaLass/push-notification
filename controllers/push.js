@@ -20,7 +20,7 @@ exports.subscribe = (req, res) => {
 
   push.save(function (err, push) {
     if (err) {
-      console.error('error with subscribe', error);
+      console.error('error with subscribe', err);
       res.status(500).send('subscription not possible');
       return;
     }
@@ -67,7 +67,7 @@ exports.unsubscribe = (req, res) => {
 
   Push.findOneAndRemove({endpoint: endpoint}, function (err,data){
     if(err) { 
-      console.error('error with unsubscribe', error);
+      console.error('error with unsubscribe', err);
       res.status(500).send('unsubscription not possible'); 
     }
     console.log('unsubscribed');

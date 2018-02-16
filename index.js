@@ -28,7 +28,7 @@ const pushController = require('./controllers/push');
  * Connect to MongoDB.
  */
 mongoose.Promise = global.Promise;
-mongoose.connect(process.env.MONGODB_URI);
+mongoose.connect(process.env.MONGODB_URI, {useMongoClient: true});
 mongoose.connection.on('error', () => {
   console.log('MongoDB connection error. Please make sure MongoDB is running.');
   process.exit();
